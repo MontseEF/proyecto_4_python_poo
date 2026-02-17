@@ -1,9 +1,9 @@
 from modules.client import Client
 
 class PremiumClient(Client):
-    def __init__(self, client_id: str, name: str, email: str, phone: str, address: str, level: str = "Gold"):
-        super().__init__(client_id, name, email, phone, address)
-        self._level = level.strip()
+    def get_type(self) -> str:
+        return "Premium"
+
 
     @property
     def level(self) -> str:

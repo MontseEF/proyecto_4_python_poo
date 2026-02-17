@@ -1,20 +1,30 @@
 from typing import Dict, List
+
 from modules.client import Client
+from modules.exceptions import (
+    ClientAlreadyExistsError,
+    ClientNotFoundError
+)
+
 
 class ClientManager:
     def __init__(self):
-        # key: client_id | valor: Client object
+        # key: client_id | valor: Cliente objeto
         self._clients: Dict[str, Client] = {}
 
     # -------- CREATE --------
     def add_client(self, client: Client) -> None:
-        # Verificar duplicado a través de client_id
+        # Duplicado client_id
         if client.client_id in self._clients:
-            raise ValueError(f"El ID de Cliente ingresado ya existe: {client.client_id}")
+            raise ClientAlreadyExistsError(
+                f"Ya existe un cliente con ID {client.client_id}"
+            )
 
-        # Verificar duplicado a través de email
+        # Email duplicado
         if self._email_exists(client.email):
-            raise ValueError(f"El email ingresado ya existe: {client.email}")
+            raise ClientAlreadyExistsError(
+                f"Ya existe un cliente con email {client.email}"
+            )
 
         self._clients[client.client_id] = client
 
@@ -24,14 +34,19 @@ class ClientManager:
 
     def get_client_by_id(self, client_id: str) -> Client:
         if client_id not in self._clients:
-            raise ValueError(f"Cliente no encontrado: {client_id}")
+            raise ClientNotFoundError(
+                f"No se encontró un cliente con ese ID {client_id}"
+            )
         return self._clients[client_id]
 
     def get_client_by_email(self, email: str) -> Client:
         for client in self._clients.values():
             if client.email == email:
                 return client
-        raise ValueError(f"Cliente no encontrado con email: {email}")
+
+        raise ClientNotFoundError(
+            f"No se encontró un cliente con ese email {email}"
+        )
 
     # -------- UPDATE --------
     def update_client(self, client_id: str, **fields) -> None:
@@ -44,7 +59,10 @@ class ClientManager:
     # -------- DELETE --------
     def remove_client(self, client_id: str) -> None:
         if client_id not in self._clients:
-            raise ValueError(f"Cliente no encontrado: {client_id}")
+            raise ClientNotFoundError(
+                f"No se encontró un cliente con ese ID {client_id}"
+            )
+
         del self._clients[client_id]
 
     # -------- HELPERS --------
@@ -53,3 +71,7 @@ class ClientManager:
             if client.email == email:
                 return True
         return False
+    
+    def id_exists(self, client_id: str) -> bool:
+        return client_id in self._clients
+

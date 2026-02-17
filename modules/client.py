@@ -1,22 +1,33 @@
+from modules.validations import validate_client_id, validate_email, validate_phone
+
+
 class Client:
     """
     Base class para todos los clientes (propietarios).
     Identificadores únicos:
-    - client_id (interna)
-    - email (externa)
+    - client_id (interno)
+    - email (externo)
     """
 
     def __init__(self, client_id: str, name: str, email: str, phone: str, address: str):
-        self._client_id = str(client_id).strip()
-        self._name = name.strip()
-        self._email = email.strip().lower()
-        self._phone = phone.strip()
-        self._address = address.strip()
+        # Validar ID y asignar 
+        self.client_id = client_id
+
+        # Usar setters para que pasen por limpieza/validación
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.address = address
 
     # --- Getters / Setters (encapsulamiento) ---
     @property
     def client_id(self) -> str:
         return self._client_id
+
+    @client_id.setter
+    def client_id(self, value: str) -> None:
+        validate_client_id(value)
+        self._client_id = str(value).strip()
 
     @property
     def name(self) -> str:
@@ -24,7 +35,7 @@ class Client:
 
     @name.setter
     def name(self, value: str) -> None:
-        self._name = value.strip()
+        self._name = str(value).strip()
 
     @property
     def email(self) -> str:
@@ -32,8 +43,8 @@ class Client:
 
     @email.setter
     def email(self, value: str) -> None:
-        # Validation Será agregado más adelante en validation.py
-        self._email = value.strip().lower()
+        validate_email(value)
+        self._email = str(value).strip().lower()
 
     @property
     def phone(self) -> str:
@@ -41,8 +52,8 @@ class Client:
 
     @phone.setter
     def phone(self, value: str) -> None:
-        # Validation will be added later
-        self._phone = value.strip()
+        validate_phone(value)
+        self._phone = str(value).strip()
 
     @property
     def address(self) -> str:
@@ -50,22 +61,20 @@ class Client:
 
     @address.setter
     def address(self, value: str) -> None:
-        self._address = value.strip()
+        self._address = str(value).strip()
 
     # --- Polimorfismo ---
     def get_type(self) -> str:
-        return "Regular"  
+        return "Regular"
 
     def get_summary(self) -> str:
         return (
             f"[{self.get_type()}] "
-            f"ID={self.client_id} | Name={self.name} | Email={self.email} | Phone={self.phone}"
+            f"ID={self.client_id} | Nombre={self.name} | Email={self.email} | Teléfono={self.phone}"
         )
 
     def to_dict(self) -> dict:
-        """
-        Util para exportar a CSV.
-        """
+        """Útil para exportar a CSV."""
         return {
             "type": self.get_type(),
             "client_id": self.client_id,
