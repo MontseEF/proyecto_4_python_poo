@@ -1,15 +1,30 @@
 import re
-from modules.exceptions import InvalidClientIdError, InvalidEmailError, InvalidPhoneError
+from modules.exceptions import InvalidNameError, InvalidClientIdError, InvalidEmailError, InvalidPhoneError
 
 
-# Email: algo@algo.dominio (simple pero útil para bootcamp)
+# Email: algo@algo.dominio 
 EMAIL_REGEX = r"^[\w\.-]+@[\w\.-]+\.[A-Za-z]{2,}$"
 
-# Teléfono: solo dígitos, 8 a 12 caracteres (ajusta si tu profe pide otro)
+# Teléfono: solo dígitos, 8 a 12 caracteres 
 PHONE_REGEX = r"^\d{8,12}$"
 
 # Client ID: alfanumérico y guiones, 1 a 20 chars (evita espacios y texto raro)
 CLIENT_ID_REGEX = r"^[A-Za-z0-9_-]{1,20}$"
+
+
+def validate_name(name: str) -> None:
+    name = name.strip()
+
+    if not name:
+        raise InvalidNameError("El nombre no puede estar vacío.")
+
+    # Solo letras y espacios (incluye acentos y ñ)
+    pattern = r"^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+
+    if not re.match(pattern, name):
+        raise InvalidNameError(
+            "El nombre solo puede contener letras y espacios."
+        )
 
 
 def validate_client_id(client_id: str) -> None:

@@ -3,8 +3,8 @@ from modules.regular_client import RegularClient
 from modules.premium_client import PremiumClient
 from modules.corporate_client import CorporateClient
 
-from modules.exceptions import ClientError, InvalidEmailError, InvalidPhoneError
-from modules.validations import validate_email, validate_phone
+from modules.exceptions import ClientError,InvalidNameError, InvalidEmailError, InvalidPhoneError
+from modules.validations import validate_name, validate_email, validate_phone
 
 
 def print_menu() -> None:
@@ -35,6 +35,15 @@ def prompt_unique_client_id(manager: ClientManager, label: str = "ID del cliente
         return value
 
 
+def prompt_name(label: str = "Nombre") -> str:
+    while True:
+        value = prompt_non_empty(label)
+        try:
+            validate_name(value)
+            return value
+        except InvalidNameError as e:
+            print(f"[ERROR] {e}")
+            print("Intenta nuevamente.\n")
 
 def prompt_email(label: str = "Email") -> str:
     while True:
@@ -88,7 +97,7 @@ def prompt_client_type() -> str:
 def create_client_from_input(manager: ClientManager):
     client_type = prompt_client_type()
     client_id = prompt_unique_client_id(manager)
-    name = prompt_non_empty("Nombre")
+    name = prompt_name("Nombre")
     email = prompt_email("Email")          
     phone = prompt_phone("Teléfono")       
     address = prompt_non_empty("Dirección")

@@ -1,0 +1,6 @@
+2026-02-17 18:48:31,769 - INFO - Cliente agregado: ID=001 Email=prueba@test.com Type=Regular
+2026-02-17 18:51:28,102 - INFO - Cliente agregado: ID=001 Email=test@test.com Type=Regular
+2026-02-17 18:52:12,229 - ERROR - Cliente no encontrado por ID: 002
+2026-02-17 18:52:46,241 - ERROR - Cliente no encontrado por email: hola@test.com
+2026-02-17 18:53:25,249 - INFO - Cliente actualizado: ID=001 Campos=['phone', 'address']
+2026-02-17 18:53:38,185 - INFO - Cliente eliminado: ID=001 Email=test@test.com Type=Regular

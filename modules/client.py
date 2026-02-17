@@ -1,4 +1,4 @@
-from modules.validations import validate_client_id, validate_email, validate_phone
+from modules.validations import validate_client_id, validate_name,  validate_email, validate_phone
 
 
 class Client:
@@ -33,9 +33,13 @@ class Client:
     def name(self) -> str:
         return self._name
 
+   
+
     @name.setter
     def name(self, value: str) -> None:
-        self._name = str(value).strip()
+        validate_name(value)
+        self._name = value.strip()
+
 
     @property
     def email(self) -> str:

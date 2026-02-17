@@ -4,6 +4,9 @@ class ClientError(Exception):
     """Error base para el sistema de clientes."""
     pass
 
+class InvalidNameError(ClientError):
+    pass
+
 
 class ClientAlreadyExistsError(ClientError):
     pass
