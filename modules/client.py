@@ -1,4 +1,4 @@
-from modules.validations import validate_client_id, validate_name,  validate_email, validate_phone
+from modules.validations import validate_client_id, validate_name, validate_email, validate_phone
 
 
 class Client:

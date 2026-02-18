@@ -4,3 +4,8 @@
 2026-02-17 18:52:46,241 - ERROR - Cliente no encontrado por email: hola@test.com
 2026-02-17 18:53:25,249 - INFO - Cliente actualizado: ID=001 Campos=['phone', 'address']
 2026-02-17 18:53:38,185 - INFO - Cliente eliminado: ID=001 Email=test@test.com Type=Regular
+2026-02-17 22:01:27,655 - INFO - Cliente agregado: ID=001 Email=test@prueba.cl Type=Regular
+2026-02-17 22:02:17,241 - INFO - Cliente agregado: ID=002 Email=sjekwl@prueba.com Type=Premium
+2026-02-17 22:03:10,624 - INFO - Cliente agregado: ID=003 Email=prueba@test.com Type=Corporate
+2026-02-17 22:04:00,029 - INFO - Cliente actualizado: ID=003 Campos=['name']
+2026-02-17 22:04:21,509 - INFO - Cliente eliminado: ID=002 Email=sjekwl@prueba.com Type=Premium

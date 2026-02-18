@@ -23,12 +23,11 @@ def save_clients_to_csv(clients: List[Client]) -> None:
         for client in clients:
             row = client.to_dict()
 
-            # Asegurar columnas fijas aunque falten en algunos tipos
+            # Completar claves faltantes
             for key in FIELDNAMES:
-                if key not in row:
-                    row[key] = ""
+                row.setdefault(key, "")
 
-            # Escribir SOLO las claves esperadas
+            # Escribir SOLO columnas esperadas
             writer.writerow({k: row[k] for k in FIELDNAMES})
 
 
@@ -40,19 +39,26 @@ def load_clients_from_csv() -> List[Client]:
 
     with open(CSV_PATH, mode="r", encoding="utf-8") as file:
         reader = csv.DictReader(file)
+
         for row in reader:
-            client_type = (row.get("type") or "Regular").strip()
+            client_type = (row.get("tipo") or "Regular").strip()
 
-            client_id = (row.get("client_id") or "").strip()
-            name = (row.get("name") or "").strip()
+            client_id = (row.get("id_cliente") or "").strip()
+            name = (row.get("nombre") or "").strip()
             email = (row.get("email") or "").strip()
-            phone = (row.get("phone") or "").strip()
-            address = (row.get("address") or "").strip()
-            company_name = (row.get("company_name") or "").strip()
+            phone = (row.get("teléfono") or "").strip()
+            address = (row.get("dirección") or "").strip()
+            company_name = (row.get("nombre_empresa") or "").strip()
 
-            if client_type == "Corporate":
-                client = CorporateClient(client_id, name, email, phone, address, company_name=company_name)
-            elif client_type == "Premium":
+            
+            if not client_id or not name or not email:
+                continue
+
+            if client_type.lower() in ("corporativo", "corporate"):
+                client = CorporateClient(
+                    client_id, name, email, phone, address, company_name=company_name
+                )
+            elif client_type.lower() in ("premium",):
                 client = PremiumClient(client_id, name, email, phone, address)
             else:
                 client = RegularClient(client_id, name, email, phone, address)
@@ -60,6 +66,18 @@ def load_clients_from_csv() -> List[Client]:
             clients.append(client)
 
     return clients
+
+
+def generate_report_txt(clients: List[Client]) -> None:
+    os.makedirs("reports", exist_ok=True)
+
+    with open(REPORT_PATH, mode="w", encoding="utf-8") as file:
+        file.write("REPORTE DE CLIENTES\n")
+        file.write("===================\n\n")
+        file.write(f"Total clientes: {len(clients)}\n\n")
+
+        for client in clients:
+            file.write(str(client) + "\n")
 
 
 def generate_report_txt(clients: List[Client]) -> None:

@@ -14,7 +14,7 @@ class CorporateClient(Client):
         self._company_name = value.strip()
 
     def get_type(self) -> str:
-        return "Corporate"
+        return "Corporativo"
 
     def get_summary(self) -> str:
         base = super().get_summary()
