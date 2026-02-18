@@ -1,0 +1,52 @@
+@startuml ClientManagementUML
+skinparam classAttributeIconSize 0
+
+class Client {
+  - _client_id: str
+  - _name: str
+  - _email: str
+  - _phone: str
+  - _address: str
+  + client_id: str
+  + name: str
+  + email: str
+  + phone: str
+  + address: str
+  + get_type(): str
+  + get_summary(): str
+  + to_dict(): dict
+}
+
+class RegularClient {
+  + get_type(): str
+}
+
+class PremiumClient {
+  + get_type(): str
+}
+
+class CorporateClient {
+  - _company_name: str
+  + company_name: str
+  + get_type(): str
+  + to_dict(): dict
+}
+
+class ClientManager {
+  - _clients: dict
+  + add_client(client: Client): void
+  + list_clients(): list
+  + get_client_by_id(client_id: str): Client
+  + get_client_by_email(email: str): Client
+  + update_client(client_id: str, updates: dict): void
+  + remove_client(client_id: str): void
+  + id_exists(client_id: str): bool
+}
+
+Client <|-- RegularClient
+Client <|-- PremiumClient
+Client <|-- CorporateClient
+
+ClientManager "1" o-- "*" Client
+
+@enduml

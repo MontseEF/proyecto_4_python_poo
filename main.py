@@ -5,6 +5,7 @@ from modules.corporate_client import CorporateClient
 
 from modules.exceptions import ClientError,InvalidNameError, InvalidEmailError, InvalidPhoneError
 from modules.validations import validate_name, validate_email, validate_phone
+from modules.file_handler import generate_report_txt
 
 
 def print_menu() -> None:
@@ -15,6 +16,7 @@ def print_menu() -> None:
     print("4) Buscar cliente por email")
     print("5) Actualizar cliente")
     print("6) Eliminar cliente")
+    print("7) Generar reporte TXT")
     print("0) Salir")
 
 
@@ -193,11 +195,6 @@ def update_client_flow(manager: ClientManager) -> None:
     if new_address:
         updates["address"] = new_address
 
-    if isinstance(client, PremiumClient):
-        new_level = input("Nuevo nivel premium: ").strip()
-        if new_level:
-            updates["level"] = new_level
-
     if isinstance(client, CorporateClient):
         new_company = input("Nuevo nombre de empresa: ").strip()
         if new_company:
@@ -247,6 +244,10 @@ def main():
                 update_client_flow(manager)
             elif option == "6":
                 remove_client_flow(manager)
+            elif option == "7":
+                generate_report_txt(manager.list_clients())
+                print("\nReporte generado en reports/reporte.txt")
+
             elif option == "0":
                 print("\nAdiós! Vuelve pronto.")
                 break
