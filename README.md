@@ -1,10 +1,13 @@
-### 🧩 Descripción del proyecto
+## 🧩 Descripción del proyecto
+
 
 Este proyecto corresponde a un Sistema de Gestión de Clientes desarrollado en Python, aplicando principios de Programación Orientada a Objetos (POO).
 
 La aplicación funciona a través de una interfaz de línea de comandos (CLI) y permite administrar distintos tipos de clientes, validando datos de entrada, persistiendo información en archivos y generando reportes.
 
-### 🎯 Funcionalidades principales
+
+## 🎯 Funcionalidades principales
+
 
 - ✅ Agregar clientes (Regular, Premium y Corporativo)
 
@@ -34,11 +37,13 @@ La aplicación funciona a través de una interfaz de línea de comandos (CLI) y 
 
 - ✅ Manejo de excepciones personalizadas
 
-### Estructura
+## Estructura
 
-![estructura_proyecto](https://drive.google.com/file/d/1XDmy-SyQp4MNyTb0gHPX2kg6TMv6RwY0/view?usp=sharing)
+![estructura_proyecto](assets/estructura_proyecto.png)
 
-### 🧠 Principios de POO aplicados
+
+
+## 🧠 Principios de POO aplicados
 
 - Encapsulamiento
  Uso de propiedades (@property) para proteger atributos internos.
@@ -52,47 +57,48 @@ La aplicación funciona a través de una interfaz de línea de comandos (CLI) y 
 - Abstracción
  Separación clara entre lógica de negocio, validaciones y persistencia.
 
-### 🗂️ Persistencia de datos
+## 🗂️ Persistencia de datos
 
 
-# 📄 CSV (data/clients.csv)
+
+### 📄 CSV (data/clients.csv)
 
  - Almacena la información estructurada de los clientes.
 
  - Puede abrirse directamente en Excel u otras herramientas.
 
-# 📄 TXT (reports/report.txt)
+### 📄 TXT (reports/report.txt)
 
  - Reporte legible para humanos.
 
  - Ideal para impresión o revisión rápida.
 
-# 📄 LOG (logs/app.log)
+### 📄 LOG (logs/app.log)
 
  - Registro técnico de eventos, errores y acciones del sistema.
 
  - Pensado para depuración y auditoría.
 
 
-### 📊 Diagramas UML
+## 📊 Diagramas UML
 
 - Version Inglés:
 
 
-![uml_ingles](https://drive.google.com/file/d/1SdbAVAZYMq7AwhLkPamNvVuvhMvtrWDy/view?usp=sharing)
+![uml_ingles](assets/diagrama_ingles.png)
 
 
 
 
 - Versión Español:
 
-![uml_español](https://drive.google.com/file/d/1SsBLlPs7fiRbDgV6LGh4f7_kzhZKen5v/view?usp=sharing)
+![uml_español](assets/diagrama_español.png)
 
 
 
 
 
-### ▶️ Video demostración
+## ▶️ Video demostración
 
 
 
@@ -104,7 +110,7 @@ La aplicación funciona a través de una interfaz de línea de comandos (CLI) y 
 
 Adjunto un vídeo de ejecución y prueba:
 
-![video_ejecucion_POO](https://drive.google.com/file/d/1icOuyCgHiJt8kseOfbX__wXeBmw25LBj/view?usp=sharing)
+![[video_ejecucion_POO](assets/video.png)](https://drive.google.com/file/d/1icOuyCgHiJt8kseOfbX__wXeBmw25LBj/view?usp=sharing)
 
 
 
