@@ -110,7 +110,7 @@ La aplicación funciona a través de una interfaz de línea de comandos (CLI) y 
 
 Adjunto un vídeo de ejecución y prueba:
 
-![[video_ejecucion_POO](assets/video.png)](https://drive.google.com/file/d/1icOuyCgHiJt8kseOfbX__wXeBmw25LBj/view?usp=sharing)
+![video_ejecucion_POO](https://youtu.be/FHBvhGcktl4)
 
 
 
