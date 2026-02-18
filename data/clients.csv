@@ -1,0 +1,3 @@
+tipo,id_cliente,nombre,email,teléfono,dirección,nombre_empresa
+Regular,001,Mon,test@test.com,165165155,sakmla,
+Corporativo,003,Amalia,prueba@tets.cl,15626556,swiels,Amigos SPA

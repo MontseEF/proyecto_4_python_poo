@@ -16,3 +16,9 @@
 2026-02-17 22:37:00,459 - ERROR - Cliente no encontrado por ID: 005
 2026-02-17 22:37:34,039 - INFO - Cliente actualizado: ID=003 Campos=['name']
 2026-02-17 22:38:05,279 - INFO - Cliente eliminado: ID=002 Email=jose@test.cl Type=Premium
+2026-02-17 23:14:13,826 - INFO - Cliente agregado: ID=001 Email=test@test.com Type=Regular
+2026-02-17 23:14:59,053 - INFO - Cliente agregado: ID=002 Email=alesta@correo.cl Type=Premium
+2026-02-17 23:15:39,828 - INFO - Cliente agregado: ID=003 Email=prueba@tets.cl Type=Corporativo
+2026-02-17 23:15:52,525 - ERROR - Cliente no encontrado por ID: 005
+2026-02-17 23:16:37,891 - INFO - Cliente actualizado: ID=003 Campos=['name']
+2026-02-17 23:16:51,713 - INFO - Cliente eliminado: ID=002 Email=alesta@correo.cl Type=Premium

@@ -1,0 +1,7 @@
+REPORTE DE CLIENTES
+===================
+
+Total clientes: 2
+
+[Regular] ID=001 | Nombre=Mon | Email=test@test.com | Teléfono=165165155 | Dirección=sakmla
+[Corporativo] ID=003 | Nombre=Amalia | Email=prueba@tets.cl | Teléfono=15626556 | Dirección=swiels | Empresa=Amigos SPA
